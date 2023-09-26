@@ -1,0 +1,15 @@
+name: zMenu
+authors: [ Maxlego08 ]
+main: fr.maxlego08.menu.MenuPlugin
+description: Inventory management plugin
+website: https://groupez.dev/resources/zmenu.253
+version: BETA-1.0.1.0
+api-version: 1.13
+contributors: [ mani1232, lijinhong11  ]
+softdepend:
+- HeadDatabase
+- PlaceholderAPI
+- zTranslator
+- ItemsAdder
+- Slimefun
+folia-supported: true
