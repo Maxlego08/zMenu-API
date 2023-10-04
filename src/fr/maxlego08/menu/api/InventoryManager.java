@@ -2,6 +2,7 @@ package fr.maxlego08.menu.api;
 
 import fr.maxlego08.menu.api.event.events.ButtonLoadEvent;
 import fr.maxlego08.menu.api.loader.MaterialLoader;
+import fr.maxlego08.menu.api.utils.MetaUpdater;
 import fr.maxlego08.menu.exceptions.InventoryException;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -274,5 +275,12 @@ public interface InventoryManager {
      * @param inventory The inventory that needs to be reloaded
      */
     void reloadInventory(Inventory inventory);
+
+    /**
+     * Set item name and item meta using spigot or adventure api
+     *
+     * @return MetaUpdater
+     */
+    MetaUpdater getMeta();
 
 }
