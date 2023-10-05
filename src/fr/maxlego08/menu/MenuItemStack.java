@@ -1,25 +1,18 @@
 package fr.maxlego08.menu;
 
 import fr.maxlego08.menu.api.InventoryManager;
-import fr.maxlego08.menu.api.loader.MaterialLoader;
 import fr.maxlego08.menu.zcore.utils.Banner;
 import fr.maxlego08.menu.zcore.utils.Firework;
 import fr.maxlego08.menu.zcore.utils.LeatherArmor;
 import fr.maxlego08.menu.zcore.utils.Potion;
-import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.EnchantmentStorageMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public class MenuItemStack {
 
@@ -31,112 +24,13 @@ public class MenuItemStack {
     }
 
     public ItemStack build(Player player) {
-       return null;
+        return null;
     }
 
     /**
      * @return the material
      */
     public String getMaterial() {
-        return null;
-    }
-
-    /**
-     * @return the amount
-     */
-    public String getAmount() {
-        return null;
-    }
-
-    /**
-     * @return the url
-     */
-    @Nullable
-    public String getUrl() {
-        return null;
-    }
-
-    /**
-     * @return the data
-     */
-    public int getData() {
-        return 0;
-    }
-
-    /**
-     * @return the durability
-     */
-    public int getDurability() {
-        return 0;
-    }
-
-    /**
-     * @return the potion
-     */
-    public Potion getPotion() {
-        return null;
-    }
-
-    /**
-     * @return the lore
-     */
-    public List<String> getLore() {
-        return null;
-    }
-
-    /**
-     * @return the flags
-     */
-    public List<ItemFlag> getFlags() {
-        return null;
-    }
-
-    /**
-     * @return the displayName
-     */
-    public String getDisplayName() {
-        return null;
-    }
-
-    /**
-     * @return the isGlowing
-     */
-    public boolean isGlowing() {
-        return false;
-    }
-
-    /**
-     * @return the modelID
-     */
-    public String getModelID() {
-        return null;
-    }
-
-    /**
-     * @return the enchantments
-     */
-    public Map<Enchantment, Integer> getEnchantments() {
-        return null;
-    }
-
-    /**
-     * @return the banner
-     */
-    public Banner getBanner() {
-        return null;
-    }
-
-    /**
-     * @return the firework
-     */
-    public Firework getFirework() {
-        return null;
-    }
-
-    /**
-     * @return the leather armor
-     */
-    public LeatherArmor getLeatherArmor() {
         return null;
     }
 
@@ -148,10 +42,25 @@ public class MenuItemStack {
     }
 
     /**
+     * @return the amount
+     */
+    public String getAmount() {
+        return null;
+    }
+
+    /**
      * @param amount the amount to set
      */
     public void setAmount(String amount) {
 
+    }
+
+    /**
+     * @return the url
+     */
+    @Nullable
+    public String getUrl() {
+        return null;
     }
 
     /**
@@ -162,10 +71,24 @@ public class MenuItemStack {
     }
 
     /**
+     * @return the data
+     */
+    public int getData() {
+        return 0;
+    }
+
+    /**
      * @param data the data to set
      */
     public void setData(int data) {
 
+    }
+
+    /**
+     * @return the durability
+     */
+    public int getDurability() {
+        return 0;
     }
 
     /**
@@ -176,10 +99,24 @@ public class MenuItemStack {
     }
 
     /**
+     * @return the potion
+     */
+    public Potion getPotion() {
+        return null;
+    }
+
+    /**
      * @param potion the potion to set
      */
     public void setPotion(Potion potion) {
 
+    }
+
+    /**
+     * @return the lore
+     */
+    public List<String> getLore() {
+        return null;
     }
 
     /**
@@ -190,10 +127,24 @@ public class MenuItemStack {
     }
 
     /**
+     * @return the flags
+     */
+    public List<ItemFlag> getFlags() {
+        return null;
+    }
+
+    /**
      * @param flags the flags to set
      */
     public void setFlags(List<ItemFlag> flags) {
 
+    }
+
+    /**
+     * @return the displayName
+     */
+    public String getDisplayName() {
+        return null;
     }
 
     /**
@@ -204,10 +155,24 @@ public class MenuItemStack {
     }
 
     /**
+     * @return the isGlowing
+     */
+    public boolean isGlowing() {
+        return false;
+    }
+
+    /**
      * @param isGlowing the isGlowing to set
      */
     public void setGlowing(boolean isGlowing) {
 
+    }
+
+    /**
+     * @return the modelID
+     */
+    public String getModelID() {
+        return null;
     }
 
     /**
@@ -225,10 +190,24 @@ public class MenuItemStack {
     }
 
     /**
+     * @return the enchantments
+     */
+    public Map<Enchantment, Integer> getEnchantments() {
+        return null;
+    }
+
+    /**
      * @param enchantments the enchantments to set
      */
     public void setEnchantments(Map<Enchantment, Integer> enchantments) {
 
+    }
+
+    /**
+     * @return the banner
+     */
+    public Banner getBanner() {
+        return null;
     }
 
     /**
@@ -239,10 +218,24 @@ public class MenuItemStack {
     }
 
     /**
+     * @return the firework
+     */
+    public Firework getFirework() {
+        return null;
+    }
+
+    /**
      * @param firework the firework to set
      */
     public void setFirework(Firework firework) {
 
+    }
+
+    /**
+     * @return the leather armor
+     */
+    public LeatherArmor getLeatherArmor() {
+        return null;
     }
 
     /**
@@ -258,6 +251,10 @@ public class MenuItemStack {
 
     public String getPath() {
         return null;
+    }
+
+    public int parseAmount(Player player) {
+        return 0;
     }
 
 }
