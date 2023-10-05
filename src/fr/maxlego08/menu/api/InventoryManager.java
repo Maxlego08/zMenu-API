@@ -283,4 +283,12 @@ public interface InventoryManager {
      */
     MetaUpdater getMeta();
 
+    /**
+     * Get current open inventory
+     *
+     * @param player inventory
+     * @return optional of inventory
+     */
+    Optional<Inventory> getCurrentPlayerInventory(Player player);
+
 }
