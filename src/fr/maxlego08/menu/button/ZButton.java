@@ -127,4 +127,14 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     public List<ActionPlayerData> getData() {
         return null;
     }
+
+    @Override
+    public List<String> getLore() {
+        return null;
+    }
+
+    @Override
+    public String getDisplayName() {
+        return null;
+    }
 }
