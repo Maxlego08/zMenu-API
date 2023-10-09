@@ -129,12 +129,12 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     @Override
-    public List<String> getLore() {
+    public List<String> buildLore(Player player) {
         return null;
     }
 
     @Override
-    public String getDisplayName() {
+    public String buildDisplayName(Player player) {
         return null;
     }
 

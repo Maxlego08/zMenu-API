@@ -205,8 +205,20 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
      */
     boolean updateOnClick();
 
-    String getDisplayName();
+    /**
+     * Display name use with auto update
+     *
+     * @param player
+     * @return display name
+     */
+    String buildDisplayName(Player player);
 
-    List<String> getLore();
+    /**
+     * Lore use with auto update
+     *
+     * @param player
+     * @return lore
+     */
+    List<String> buildLore(Player player);
 
 }
