@@ -198,4 +198,15 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
      */
     List<ActionPlayerData> getData();
 
+    /**
+     * Updates the button when someone clicks on the inventory
+     *
+     * @return boolean
+     */
+    boolean updateOnClick();
+
+    String getDisplayName();
+
+    List<String> getLore();
+
 }
