@@ -137,4 +137,9 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     public String getDisplayName() {
         return null;
     }
+
+    @Override
+    public boolean updateOnClick() {
+        return false;
+    }
 }
