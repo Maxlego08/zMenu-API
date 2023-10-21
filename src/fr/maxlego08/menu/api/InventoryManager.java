@@ -1,18 +1,19 @@
 package fr.maxlego08.menu.api;
 
-import fr.maxlego08.menu.api.button.Button;
-import fr.maxlego08.menu.api.event.events.ButtonLoadEvent;
+import fr.maxlego08.menu.api.event.FastEvent;
+import fr.maxlego08.menu.api.event.events.ButtonLoaderRegisterEvent;
 import fr.maxlego08.menu.api.loader.MaterialLoader;
 import fr.maxlego08.menu.api.utils.MetaUpdater;
 import fr.maxlego08.menu.exceptions.InventoryException;
+import fr.maxlego08.menu.zcore.utils.storage.Savable;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 /**
  * <p>Inventories management:</p>
@@ -24,7 +25,7 @@ import java.util.function.Consumer;
  * </ul>
  * <p>Api example here: <a href="https://docs.zmenu.dev/api/create-inventory">https://docs.zmenu.dev/api/create-inventory</a></p>
  */
-public interface InventoryManager {
+public interface InventoryManager extends Savable, Listener {
 
     /**
      * Allows to load an inventory, the plugin will retrieve the resource of
@@ -61,8 +62,7 @@ public interface InventoryManager {
      * @return New {@link Inventory}
      * @throws InventoryException Error loading inventory
      */
-    Inventory loadInventory(Plugin plugin, String fileName, Class<? extends Inventory> classz)
-            throws InventoryException;
+    Inventory loadInventory(Plugin plugin, String fileName, Class<? extends Inventory> classz) throws InventoryException;
 
     /**
      * Allows you to load an inventory from a file. You must add the class of
@@ -74,8 +74,7 @@ public interface InventoryManager {
      * @return New {@link Inventory}
      * @throws InventoryException Error loading inventory
      */
-    Inventory loadInventory(Plugin plugin, File file, Class<? extends Inventory> classz)
-            throws InventoryException;
+    Inventory loadInventory(Plugin plugin, File file, Class<? extends Inventory> classz) throws InventoryException;
 
     /**
      * Allows you to load an inventory from a file You must add the class of
@@ -201,7 +200,7 @@ public interface InventoryManager {
     void openInventory(Player player, Inventory inventory, int page, Inventory... inventories);
 
     /**
-     * Allows to load the buttons The {@link ButtonLoadEvent} event will be
+     * Allows to load the buttons The {@link ButtonLoaderRegisterEvent} event will be
      * called, so you can add your own buttons using this event
      */
     void loadButtons();
@@ -294,18 +293,25 @@ public interface InventoryManager {
     Optional<Inventory> getCurrentPlayerInventory(Player player);
 
     /**
-     * Add a consumer to retrieve each button that will be saved by the plugin.
+     * Unregister FastEvent listener
      *
      * @param plugin the plugin
-     * @param consumer the consumer
      */
-    void registerButtonListener(Plugin plugin, Consumer<Button> consumer);
+    void unregisterListener(Plugin plugin);
 
     /**
-     * Unregister button listener
+     * Add a FastEvent listener, faster than Bukkit events
      *
-     * @param plugin the plugin
+     * @param plugin    the plugin
+     * @param fastEvent the fastEvent
      */
-    void unregisterButtonListener(Plugin plugin);
+    void registerFastEvent(Plugin plugin, FastEvent fastEvent);
+
+    /**
+     * Get the FastEvents
+     *
+     * @return listeners
+     */
+    Collection<FastEvent> getFastEvents();
 
 }
