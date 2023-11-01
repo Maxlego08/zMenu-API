@@ -41,9 +41,7 @@ public class InventoryLoader implements ButtonLoader {
 
     @Override
     public Button load(YamlConfiguration configuration, String path, DefaultButtonValue defaultButtonValue) {
-        String inventoryName = configuration.getString(path + "inventory");
-        String pluginName = configuration.getString(path + "plugin");
-        return new ZInventoryButton(this.manager, inventoryName, pluginName);
+        return new ZInventoryButton();
     }
 
 }

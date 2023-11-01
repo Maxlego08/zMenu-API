@@ -35,6 +35,6 @@ public class MainMenuLoader implements ButtonLoader {
 
     @Override
     public Button load(YamlConfiguration configuration, String path, DefaultButtonValue defaultButtonValue) {
-        return new ZMainMenuButton(manager);
+        return new ZMainMenuButton();
     }
 }

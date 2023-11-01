@@ -41,7 +41,7 @@ public class HomeLoader implements ButtonLoader {
 
     @Override
     public Button load(YamlConfiguration configuration, String path, DefaultButtonValue defaultButtonValue) {
-        return new ZHomeButton(this.manager);
+        return new ZHomeButton();
     }
 
 }
