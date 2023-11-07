@@ -6,6 +6,7 @@ import fr.maxlego08.menu.api.loader.MaterialLoader;
 import fr.maxlego08.menu.api.utils.MetaUpdater;
 import fr.maxlego08.menu.exceptions.InventoryException;
 import fr.maxlego08.menu.zcore.utils.storage.Savable;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -313,5 +314,29 @@ public interface InventoryManager extends Savable, Listener {
      * @return listeners
      */
     Collection<FastEvent> getFastEvents();
+
+    /**
+     * Displays the list of available inventories
+     *
+     * @param sender Command sender
+     */
+    void sendInventories(CommandSender sender);
+
+    /**
+     * Create a new inventory file
+     *
+     * @param sender Command sender
+     * @param fileName inventory file name
+     * @param inventorySize inventory size
+     * @param inventoryName inventory name
+     */
+    void createNewInventory(CommandSender sender, String fileName, int inventorySize, String inventoryName);
+
+    /**
+     * Opens the player’s current inventory again
+     *
+     * @param player the player
+     */
+    void updateInventory(Player player);
 
 }

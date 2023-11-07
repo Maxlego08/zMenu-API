@@ -1,6 +1,7 @@
 package fr.maxlego08.menu.button;
 
 import fr.maxlego08.menu.MenuItemStack;
+import fr.maxlego08.menu.api.Inventory;
 import fr.maxlego08.menu.api.action.data.ActionPlayerData;
 import fr.maxlego08.menu.api.button.Button;
 import fr.maxlego08.menu.api.sound.SoundOption;
@@ -141,5 +142,10 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     @Override
     public boolean updateOnClick() {
         return false;
+    }
+
+    @Override
+    public void onBackClick(Player player, InventoryClickEvent event, InventoryDefault inventory, List<Inventory> oldInventories, Inventory toInventory, int slot) {
+
     }
 }

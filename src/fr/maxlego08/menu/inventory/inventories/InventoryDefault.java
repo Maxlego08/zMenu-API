@@ -34,4 +34,7 @@ public class InventoryDefault extends VInventory {
 
     }
 
+    public void setMaxPage(int maxPage) {
+    }
+
 }
