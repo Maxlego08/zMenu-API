@@ -1,6 +1,5 @@
 package fr.maxlego08.menu.button;
 
-import fr.maxlego08.menu.api.action.Action;
 import fr.maxlego08.menu.api.button.PerformButton;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -12,14 +11,11 @@ import java.util.List;
 public abstract class ZPerformButton extends ZSlotButton implements PerformButton {
 
     private List<String> commands;
-
     private List<String> consoleCommands;
     private List<String> consoleRightCommands;
     private List<String> consoleLeftCommands;
     private List<String> consolePermissionCommands;
     private String consolePermission;
-
-    private List<Action> actions;
 
     @Override
     public List<String> getCommands() {
@@ -110,8 +106,6 @@ public abstract class ZPerformButton extends ZSlotButton implements PerformButto
         if (this.consolePermission == null || player.hasPermission(this.consolePermission)) {
             this.execute(Bukkit.getConsoleSender(), player, this.consolePermissionCommands);
         }
-
-        this.actions.stream().filter(action -> action.isClick(type)).forEach(action -> action.execute(player, type));
     }
 
     /**
@@ -122,19 +116,5 @@ public abstract class ZPerformButton extends ZSlotButton implements PerformButto
      * @param strings
      */
     private void execute(CommandSender executor, Player player, List<String> strings) {
-
     }
-
-    @Override
-    public List<Action> getActions() {
-        return this.actions;
-    }
-
-    /**
-     * @param actions the actions to set
-     */
-    public void setActions(List<Action> actions) {
-        this.actions = actions;
-    }
-
 }

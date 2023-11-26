@@ -14,7 +14,7 @@ public abstract class FastEvent {
      *
      * @param event {@link ButtonLoadEvent}
      */
-    public void onButtonLoad(ButtonLoadEvent event) {
+    public void onButtonLoad(ButtonLoadEvent event){
 
     }
 
@@ -23,7 +23,7 @@ public abstract class FastEvent {
      *
      * @param event {@link InventoryLoadEvent}
      */
-    public void onInventoryLoad(InventoryLoadEvent event) {
+    public void onInventoryLoad(InventoryLoadEvent event){
 
     }
 
@@ -32,7 +32,7 @@ public abstract class FastEvent {
      *
      * @param event {@link PlayerOpenInventoryEvent}
      */
-    public void onPlayerOpenInventory(PlayerOpenInventoryEvent event) {
+    public void onPlayerOpenInventory(PlayerOpenInventoryEvent event){
 
     }
 }
