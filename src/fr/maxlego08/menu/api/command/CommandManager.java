@@ -1,6 +1,7 @@
 package fr.maxlego08.menu.api.command;
 
 import fr.maxlego08.menu.api.Inventory;
+import fr.maxlego08.menu.zcore.utils.storage.Savable;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -8,88 +9,99 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Optional;
 
-public interface CommandManager {
+/**
+ * Manages the registration, loading, and execution of commands associated with inventories.
+ */
+public interface CommandManager extends Savable {
 
     /**
-     * Register a new {@link Command}
+     * Registers a new {@link Command}.
      *
-     * @param command New command
+     * @param command The new command to register.
      */
     void registerCommand(Command command);
 
     /**
-     * Returns the list of commands of a plugin
+     * Returns the list of commands associated with a specific plugin.
      *
-     * @param plugin Current plugin
-     * @return commands
+     * @param plugin The plugin for which to retrieve commands.
+     * @return A collection of commands associated with the plugin.
      */
     Collection<Command> getCommands(Plugin plugin);
 
     /**
-     * @return commands
+     * Returns all registered commands.
+     *
+     * @return A collection of all registered commands.
      */
     Collection<Command> getCommands();
 
     /**
-     * @param plugin Current plugin
+     * Unregisters all commands associated with a specific plugin.
+     *
+     * @param plugin The plugin for which to unregister commands.
      */
     void unregisterCommands(Plugin plugin);
 
     /**
-     * @param command Current plugin
+     * Unregisters a specific command.
+     *
+     * @param command The command to unregister.
      */
     void unregisterCommands(Command command);
 
     /**
-     *
+     * Loads commands from the configuration files.
      */
     void loadCommands();
 
     /**
-     * @param plugin Current plugin
-     * @param file   Current file
+     * Loads a specific command from a plugin's configuration file.
+     *
+     * @param plugin The plugin to which the command belongs.
+     * @param file   The configuration file of the command.
      */
     void loadCommand(Plugin plugin, File file);
 
     /**
-     * Return command by an inventory
+     * Retrieves the command associated with a specific inventory.
      *
-     * @param inventory Current inventory
-     * @return optional
+     * @param inventory The inventory for which to retrieve the command.
+     * @return An optional containing the associated command, or empty if not found.
      */
     Optional<Command> getCommand(Inventory inventory);
 
     /**
-     * Allows to register a key and a value for the arguments of a command.
+     * Registers a key-value pair for the arguments of a command associated with a player.
      *
-     * @param player Current Player
-     * @param key    Argument key
-     * @param value  Argument value
+     * @param player The player for whom to register the arguments.
+     * @param key    The argument key.
+     * @param value  The argument value.
      */
     void setPlayerArgument(Player player, String key, String value);
 
     /**
-     * Returns an optional of the argument with the key
+     * Retrieves the value of an argument associated with a player and key.
      *
-     * @param player Current player
-     * @param key    Argument value
-     * @return optional
+     * @param player The player for whom to retrieve the argument.
+     * @param key    The argument key.
+     * @return An optional containing the argument value, or empty if not found.
      */
     Optional<String> getPlayerArgument(Player player, String key);
 
     /**
-     * Get command by name
+     * Retrieves the command associated with a specific name.
      *
-     * @param commandName The command name
-     * @return optional
+     * @param commandName The name of the command.
+     * @return An optional containing the associated command, or empty if not found.
      */
     Optional<Command> getCommand(String commandName);
 
     /**
-     * Reload command
+     * Reloads a specific command.
      *
-     * @param command Command
+     * @param command The command to reload.
+     * @return {@code true} if the reload was successful, otherwise {@code false}.
      */
     boolean reload(Command command);
-
 }

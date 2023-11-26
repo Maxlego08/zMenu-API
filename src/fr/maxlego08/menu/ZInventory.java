@@ -4,6 +4,7 @@ import fr.maxlego08.menu.api.Inventory;
 import fr.maxlego08.menu.api.button.Button;
 import fr.maxlego08.menu.api.pattern.Pattern;
 import fr.maxlego08.menu.api.players.inventory.InventoriesPlayer;
+import fr.maxlego08.menu.api.requirement.Requirement;
 import fr.maxlego08.menu.inventory.VInventory;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import fr.maxlego08.menu.zcore.utils.inventory.InventoryResult;
@@ -20,16 +21,6 @@ import java.util.stream.Collectors;
 
 public class ZInventory implements Inventory {
 
-    /**
-     * @param plugin The plugin where the inventory comes from
-     * @param name Inventory name
-     * @param fileName Inventory file name
-     * @param size Inventory size
-     * @param buttons List of {@link Button}
-     */
-    public ZInventory(Plugin plugin, String name, String fileName, int size, List<Button> buttons) {
-        super();
-    }
 
     @Override
     public int size() {
@@ -38,16 +29,21 @@ public class ZInventory implements Inventory {
 
     @Override
     public String getName() {
-        return "";
+        return null;
     }
 
     @Override
     public String getFileName() {
-        return "";
+        return null;
     }
 
     @Override
     public Collection<Button> getButtons() {
+        return null;
+    }
+
+    @Override
+    public Collection<Pattern> getPatterns() {
         return null;
     }
 
@@ -63,7 +59,7 @@ public class ZInventory implements Inventory {
 
     @Override
     public int getMaxPage(Player player, Object... objects) {
-        return 1;
+        return 0;
     }
 
     @Override
@@ -72,17 +68,17 @@ public class ZInventory implements Inventory {
     }
 
     @Override
-    public InventoryResult openInventory(Player player, VInventory inventoryDefault) {
-        return InventoryResult.SUCCESS;
+    public InventoryResult openInventory(Player player, InventoryDefault inventoryDefault) {
+        return null;
     }
 
     @Override
-    public void postOpenInventory(Player player, VInventory inventoryDefault) {
+    public void postOpenInventory(Player player, InventoryDefault inventoryDefault) {
 
     }
 
     @Override
-    public void closeInventory(Player player, VInventory inventoryDefault) {
+    public void closeInventory(Player player, InventoryDefault inventoryDefault) {
 
     }
 
@@ -91,35 +87,14 @@ public class ZInventory implements Inventory {
         return null;
     }
 
-    public void setFillItemStack(MenuItemStack fillItemStack) {
-
-    }
-
     @Override
     public int getUpdateInterval() {
         return 0;
     }
 
-    public void setUpdateInterval(int updateInterval) {
-
-    }
-
-    /**
-     * @return the size
-     */
-    public int getSize() {
-        return 0;
-    }
-
-    /**
-     * @return the file
-     */
+    @Override
     public File getFile() {
         return null;
-    }
-
-    public void setFile(File file) {
-
     }
 
     @Override
@@ -127,16 +102,8 @@ public class ZInventory implements Inventory {
         return false;
     }
 
-    public void setClearInventory(boolean clearInventory) {
-
-    }
-
     @Override
-    public List<Pattern> getPatterns() {
+    public Requirement getOpenRequirement() {
         return null;
-    }
-
-    public void setPatterns(List<Pattern> patterns) {
-
     }
 }
