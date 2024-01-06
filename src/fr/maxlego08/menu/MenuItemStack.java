@@ -257,4 +257,8 @@ public class MenuItemStack {
         return 0;
     }
 
+    public void setNeedPlaceholderAPI(boolean needPlaceholderAPI) {
+
+    }
+
 }
