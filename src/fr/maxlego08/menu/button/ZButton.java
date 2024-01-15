@@ -4,6 +4,7 @@ import fr.maxlego08.menu.MenuItemStack;
 import fr.maxlego08.menu.api.Inventory;
 import fr.maxlego08.menu.api.button.Button;
 import fr.maxlego08.menu.api.players.DataManager;
+import fr.maxlego08.menu.api.requirement.Action;
 import fr.maxlego08.menu.api.requirement.Requirement;
 import fr.maxlego08.menu.api.requirement.data.ActionPlayerData;
 import fr.maxlego08.menu.api.sound.SoundOption;
@@ -250,5 +251,10 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     @Override
     public boolean checkPermission(Player player, InventoryDefault inventory) {
         return super.checkPermission(player, inventory);
+    }
+
+    @Override
+    public List<Action> getActions() {
+        return null;
     }
 }

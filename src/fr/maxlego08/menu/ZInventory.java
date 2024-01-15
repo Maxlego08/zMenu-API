@@ -5,6 +5,7 @@ import fr.maxlego08.menu.api.button.Button;
 import fr.maxlego08.menu.api.pattern.Pattern;
 import fr.maxlego08.menu.api.players.inventory.InventoriesPlayer;
 import fr.maxlego08.menu.api.requirement.Requirement;
+import fr.maxlego08.menu.api.utils.OpenWithItem;
 import fr.maxlego08.menu.inventory.VInventory;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import fr.maxlego08.menu.zcore.utils.inventory.InventoryResult;
@@ -104,6 +105,11 @@ public class ZInventory implements Inventory {
 
     @Override
     public Requirement getOpenRequirement() {
+        return null;
+    }
+
+    @Override
+    public OpenWithItem getOpenWithItem() {
         return null;
     }
 }
