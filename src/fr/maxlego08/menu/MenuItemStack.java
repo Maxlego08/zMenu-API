@@ -24,6 +24,10 @@ public class MenuItemStack {
     }
 
     public ItemStack build(Player player) {
+        return build(player, true);
+    }
+
+    public ItemStack build(Player player, boolean useCache) {
         return null;
     }
 
