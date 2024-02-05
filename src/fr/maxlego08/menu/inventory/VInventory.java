@@ -101,4 +101,7 @@ public abstract class VInventory implements Cloneable, InventoryHolder {
         return null;
     }
 
+    public void setDisableClick(boolean disableClick){
+
+    }
 }
