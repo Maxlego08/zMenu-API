@@ -10,6 +10,7 @@ import fr.maxlego08.menu.api.utils.OpenLink;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -222,12 +223,12 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
     /**
      * Performs an action when a back button is clicked.
      *
-     * @param player          The player.
-     * @param event           The inventory click event.
-     * @param inventory       The current inventory.
-     * @param oldInventories  The list of old inventories.
-     * @param toInventory     The inventory to open.
-     * @param slot            The current slot.
+     * @param player         The player.
+     * @param event          The inventory click event.
+     * @param inventory      The current inventory.
+     * @param oldInventories The list of old inventories.
+     * @param toInventory    The inventory to open.
+     * @param slot           The current slot.
      */
     void onBackClick(Player player, InventoryClickEvent event, InventoryDefault inventory, List<Inventory> oldInventories, Inventory toInventory, int slot);
 
@@ -251,4 +252,6 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
      * @return actions
      */
     List<Action> getActions();
+
+    void onDrag(InventoryDragEvent event, Player player, InventoryDefault inventoryDefault);
 }

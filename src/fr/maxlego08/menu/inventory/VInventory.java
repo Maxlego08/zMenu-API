@@ -62,6 +62,10 @@ public abstract class VInventory implements Cloneable, InventoryHolder {
         return false;
     }
 
+    public void setDisableClick(boolean disableClick) {
+
+    }
+
     /**
      * Allows to recover the player
      *
@@ -101,7 +105,11 @@ public abstract class VInventory implements Cloneable, InventoryHolder {
         return null;
     }
 
-    public void setDisableClick(boolean disableClick){
+    public boolean isDisablePlayerInventoryClick() {
+        return false;
+    }
+
+    public void setDisablePlayerInventoryClick(boolean disablePlayerInventoryClick) {
 
     }
 }
