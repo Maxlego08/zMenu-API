@@ -257,4 +257,9 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     @Override
     public void onDrag(InventoryDragEvent event, Player player, InventoryDefault inventoryDefault) {
     }
+
+    @Override
+    public void onInventoryClick(InventoryClickEvent event, Player player, InventoryDefault inventoryDefault) {
+
+    }
 }

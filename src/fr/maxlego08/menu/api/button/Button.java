@@ -254,4 +254,6 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
     List<Action> getActions();
 
     void onDrag(InventoryDragEvent event, Player player, InventoryDefault inventoryDefault);
+
+    void onInventoryClick(InventoryClickEvent event, Player player, InventoryDefault inventoryDefault);
 }
