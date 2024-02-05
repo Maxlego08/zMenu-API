@@ -344,8 +344,9 @@ public interface InventoryManager extends Savable, Listener {
      * @param sender    Command Sender
      * @param itemStack The itemStack
      * @param name      The item name
+     * @param type      Save type
      */
-    void saveItem(CommandSender sender, ItemStack itemStack, String name);
+    void saveItem(CommandSender sender, ItemStack itemStack, String name, String type);
 
 
     /**
