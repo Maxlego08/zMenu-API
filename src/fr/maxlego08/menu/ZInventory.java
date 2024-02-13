@@ -22,6 +22,9 @@ import java.util.stream.Collectors;
 
 public class ZInventory implements Inventory {
 
+    public ZInventory(Plugin plugin, String name, String fileName, int size, List<Button> buttons) {
+        super();
+    }
 
     @Override
     public int size() {
