@@ -22,6 +22,9 @@ import java.util.stream.Collectors;
 
 public class ZInventory implements Inventory {
 
+    public ZInventory(Plugin plugin, String name, String fileName, int size, List<Button> buttons) {
+        super();
+    }
 
     @Override
     public int size() {
@@ -64,7 +67,17 @@ public class ZInventory implements Inventory {
     }
 
     @Override
+    public int getMaxPage(List<Button> buttons, Player player, Object... objects) {
+        return 0;
+    }
+
+    @Override
     public List<Button> sortButtons(int page, Object... objects) {
+        return null;
+    }
+
+    @Override
+    public List<Button> sortPatterns(Pattern pattern, int page, Object... objects) {
         return null;
     }
 

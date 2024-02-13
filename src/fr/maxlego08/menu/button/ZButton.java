@@ -3,21 +3,17 @@ package fr.maxlego08.menu.button;
 import fr.maxlego08.menu.MenuItemStack;
 import fr.maxlego08.menu.api.Inventory;
 import fr.maxlego08.menu.api.button.Button;
-import fr.maxlego08.menu.api.players.DataManager;
 import fr.maxlego08.menu.api.requirement.Action;
 import fr.maxlego08.menu.api.requirement.Requirement;
 import fr.maxlego08.menu.api.requirement.data.ActionPlayerData;
 import fr.maxlego08.menu.api.sound.SoundOption;
 import fr.maxlego08.menu.api.utils.OpenLink;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ZButton extends ZPlaceholderButton implements Button {
@@ -256,5 +252,14 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     @Override
     public List<Action> getActions() {
         return null;
+    }
+
+    @Override
+    public void onDrag(InventoryDragEvent event, Player player, InventoryDefault inventoryDefault) {
+    }
+
+    @Override
+    public void onInventoryClick(InventoryClickEvent event, Player player, InventoryDefault inventoryDefault) {
+
     }
 }
