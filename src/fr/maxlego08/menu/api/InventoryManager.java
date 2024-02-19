@@ -337,7 +337,7 @@ public interface InventoryManager extends Savable, Listener {
      * @param player The player.
      */
     void updateInventory(Player player);
-    
+
     /**
      * Opens the player’s current inventory again if the plugin is the same.
      *
