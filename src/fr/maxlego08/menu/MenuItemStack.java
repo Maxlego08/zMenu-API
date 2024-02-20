@@ -1,6 +1,7 @@
 package fr.maxlego08.menu;
 
 import fr.maxlego08.menu.api.InventoryManager;
+import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.zcore.utils.Banner;
 import fr.maxlego08.menu.zcore.utils.Firework;
 import fr.maxlego08.menu.zcore.utils.LeatherArmor;
@@ -28,6 +29,10 @@ public class MenuItemStack {
     }
 
     public ItemStack build(Player player, boolean useCache) {
+        return build(player, useCache, new Placeholders());
+    }
+
+    public ItemStack build(Player player, boolean useCache, Placeholders placeholders) {
         return null;
     }
 
