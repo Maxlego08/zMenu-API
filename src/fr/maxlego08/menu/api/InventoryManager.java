@@ -1,5 +1,6 @@
 package fr.maxlego08.menu.api;
 
+import fr.maxlego08.menu.api.button.ButtonOption;
 import fr.maxlego08.menu.api.event.FastEvent;
 import fr.maxlego08.menu.api.event.events.ButtonLoaderRegisterEvent;
 import fr.maxlego08.menu.api.itemstack.ItemStackSimilar;
@@ -11,12 +12,14 @@ import fr.maxlego08.menu.zcore.utils.storage.Savable;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -353,10 +356,18 @@ public interface InventoryManager extends Savable, Listener {
      * @param sender    Command Sender
      * @param itemStack The itemStack
      * @param name      The item name
-     * @param type      Save type
+     * @param type
      */
     void saveItem(CommandSender sender, ItemStack itemStack, String name, String type);
 
+    /**
+     * Transforms a string list into a click list type.
+     * If the list contains ANY or ALL then the ClickType present in the plugin configuration will be added to the list.
+     *
+     * @param loadClicks - Click type as string
+     * @return Loaded click type
+     */
+    List<ClickType> loadClicks(List<String> loadClicks);
 
     /**
      * Registers an ItemStackSimilar instance for verifying ItemStacks.
@@ -385,5 +396,40 @@ public interface InventoryManager extends Savable, Listener {
      */
     Collection<ItemStackSimilar> getItemStackVerifications();
 
+    /**
+     * Gets the scheduler associated with this button option.
+     *
+     * @return The ZScheduler associated with this button option.
+     */
     ZScheduler getScheduler();
+
+    /**
+     * Registers a new button option class with the plugin.
+     *
+     * @param plugin The plugin with which the button option is to be registered.
+     * @param buttonOption The class of the button option to register.
+     */
+    void registerOption(Plugin plugin, Class<? extends ButtonOption> buttonOption);
+
+    /**
+     * Unregisters all button options associated with the given plugin.
+     *
+     * @param plugin The plugin whose button options are to be unregistered.
+     */
+    void unregisterOptions(Plugin plugin);
+
+    /**
+     * Retrieves a map of all registered button options grouped by plugin.
+     *
+     * @return A Map where each key is a Plugin and each value is a List of button option classes associated with that plugin.
+     */
+    Map<Plugin, List<Class<? extends ButtonOption>>> getOptions();
+
+    /**
+     * Retrieves an Optional containing the class of the button option with the given name.
+     *
+     * @param name The name of the button option to retrieve.
+     * @return An Optional containing the button option class if found, or an empty Optional if not found.
+     */
+    Optional<Class<? extends ButtonOption>> getOption(String name);
 }

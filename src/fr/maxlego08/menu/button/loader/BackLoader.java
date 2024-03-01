@@ -41,7 +41,7 @@ public class BackLoader implements ButtonLoader {
 
     @Override
     public Button load(YamlConfiguration configuration, String path, DefaultButtonValue defaultButtonValue) {
-        return new ZBackButton();
+        return new ZBackButton(this.manager);
     }
 
 }

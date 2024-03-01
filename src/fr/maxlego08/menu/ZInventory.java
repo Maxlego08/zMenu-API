@@ -67,7 +67,7 @@ public class ZInventory implements Inventory {
     }
 
     @Override
-    public int getMaxPage(List<Button> buttons, Player player, Object... objects) {
+    public int getMaxPage(Collection<Pattern> patterns, Player player, Object... objects) {
         return 0;
     }
 

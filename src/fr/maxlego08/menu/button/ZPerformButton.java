@@ -116,5 +116,6 @@ public abstract class ZPerformButton extends ZSlotButton implements PerformButto
      * @param strings
      */
     private void execute(CommandSender executor, Player player, List<String> strings) {
+
     }
 }

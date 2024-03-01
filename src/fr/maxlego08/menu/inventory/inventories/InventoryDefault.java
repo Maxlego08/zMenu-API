@@ -26,15 +26,15 @@ public class InventoryDefault extends VInventory {
         return 0;
     }
 
+    public void setMaxPage(int maxPage) {
+    }
+
     public List<Button> getButtons() {
         return null;
     }
 
     public void buildButton(Button button) {
 
-    }
-
-    public void setMaxPage(int maxPage) {
     }
 
 }

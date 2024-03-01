@@ -3,15 +3,17 @@ package fr.maxlego08.menu.button;
 import fr.maxlego08.menu.api.button.Button;
 import fr.maxlego08.menu.api.button.PermissibleButton;
 import fr.maxlego08.menu.api.requirement.permissible.PermissionPermissible;
+import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class ZPermissibleButton extends ZPerformButton implements PermissibleButton {
 
+    private List<PermissionPermissible> permissions = new ArrayList<>();
+    private List<PermissionPermissible> orPermissions = new ArrayList<>();
     private Button elseButton;
     private Button parentButton;
 
@@ -30,7 +32,7 @@ public abstract class ZPermissibleButton extends ZPerformButton implements Permi
 
     @Override
     public boolean hasPermission() {
-        return false;
+        return !this.permissions.isEmpty() || !this.orPermissions.isEmpty();
     }
 
     @Override
@@ -39,7 +41,16 @@ public abstract class ZPermissibleButton extends ZPerformButton implements Permi
     }
 
     @Override
-    public boolean checkPermission(Player player, InventoryDefault inventory) {
+    public boolean checkPermission(Player player, InventoryDefault inventory, Placeholders placeholders) {
+
+        if (!this.orPermissions.isEmpty()) {
+            return this.orPermissions.stream().anyMatch(p -> p.hasPermission(player, null, inventory, placeholders));
+        }
+
+        if (!this.permissions.isEmpty()) {
+            return this.permissions.stream().allMatch(p -> p.hasPermission(player, null, inventory, placeholders));
+        }
+
         return true;
     }
 
@@ -65,25 +76,27 @@ public abstract class ZPermissibleButton extends ZPerformButton implements Permi
 
     @Override
     public List<PermissionPermissible> getOrPermission() {
-        return null;
+        return this.orPermissions;
     }
 
     @Override
     public List<PermissionPermissible> getPermissions() {
-        return null;
-    }
-
-    public void setPermissions(List<String> permissions, String permission) {
-    }
-
-    public void setOrPermissionsString(List<String> orPermissions) {
+        return this.permissions;
     }
 
     public void setPermissions(List<PermissionPermissible> permissions) {
+        this.permissions = permissions;
+    }
+
+    public void setPermissions(List<String> permissions, String permission) {
+
+    }
+
+    public void setOrPermissionsString(List<String> orPermissions) {
 
     }
 
     public void setOrPermissions(List<PermissionPermissible> orPermissions) {
-
+        this.orPermissions = orPermissions;
     }
 }

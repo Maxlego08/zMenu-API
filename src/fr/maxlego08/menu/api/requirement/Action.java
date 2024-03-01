@@ -1,6 +1,7 @@
 package fr.maxlego08.menu.api.requirement;
 
 import fr.maxlego08.menu.api.button.Button;
+import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import org.bukkit.entity.Player;
 
@@ -14,11 +15,13 @@ public abstract class Action {
     /**
      * Executes the action for the specified player.
      *
-     * @param player The player who triggers the action.
+     * @param player       The player who triggers the action.
+     * @param placeholders Placeholders
      */
-    protected abstract void execute(Player player, Button button, InventoryDefault inventory);
+    protected abstract void execute(Player player, Button button, InventoryDefault inventory, Placeholders placeholders);
 
-    public void preExecute(Player player, Button button, InventoryDefault inventory) {
+    public void preExecute(Player player, Button button, InventoryDefault inventory, Placeholders placeholders) {
+
     }
 
     public int getDelay() {

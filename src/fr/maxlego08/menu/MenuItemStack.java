@@ -1,6 +1,7 @@
 package fr.maxlego08.menu;
 
 import fr.maxlego08.menu.api.InventoryManager;
+import fr.maxlego08.menu.api.attribute.IAttribute;
 import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.zcore.utils.Banner;
 import fr.maxlego08.menu.zcore.utils.Firework;
@@ -213,6 +214,20 @@ public class MenuItemStack {
     }
 
     /**
+     * @return the attributes
+     */
+    public List<IAttribute> getAttributes() {
+        return null;
+    }
+
+    /**
+     * @param attributes the attributes to set.
+     */
+    public void setAttributes(List<IAttribute> attributes) {
+
+    }
+
+    /**
      * @return the banner
      */
     public Banner getBanner() {
@@ -263,6 +278,10 @@ public class MenuItemStack {
     }
 
     public int parseAmount(Player player) {
+        return 0;
+    }
+
+    public int parseAmount(Player player, Placeholders placeholders) {
         return 0;
     }
 

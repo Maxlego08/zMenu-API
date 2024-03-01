@@ -40,4 +40,5 @@ public interface MetaUpdater extends MessageSender {
      * @return Inventory with colored name
      */
     Inventory createInventory(String inventoryName, int size, InventoryHolder inventoryHolder);
+
 }
