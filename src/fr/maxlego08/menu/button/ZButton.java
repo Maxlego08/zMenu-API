@@ -3,11 +3,13 @@ package fr.maxlego08.menu.button;
 import fr.maxlego08.menu.MenuItemStack;
 import fr.maxlego08.menu.api.Inventory;
 import fr.maxlego08.menu.api.button.Button;
+import fr.maxlego08.menu.api.button.ButtonOption;
 import fr.maxlego08.menu.api.requirement.Action;
 import fr.maxlego08.menu.api.requirement.Requirement;
 import fr.maxlego08.menu.api.requirement.data.ActionPlayerData;
 import fr.maxlego08.menu.api.sound.SoundOption;
 import fr.maxlego08.menu.api.utils.OpenLink;
+import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -128,7 +130,8 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     @Override
-    public void onClick(Player player, InventoryClickEvent event, InventoryDefault inventory, int slot) {
+    public void onClick(Player player, InventoryClickEvent event, InventoryDefault inventory, int slot, Placeholders placeholders) {
+
     }
 
     @Override
@@ -245,8 +248,8 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     @Override
-    public boolean checkPermission(Player player, InventoryDefault inventory) {
-        return super.checkPermission(player, inventory);
+    public boolean checkPermission(Player player, InventoryDefault inventory, Placeholders placeholders) {
+        return false;
     }
 
     @Override
@@ -256,10 +259,34 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
 
     @Override
     public void onDrag(InventoryDragEvent event, Player player, InventoryDefault inventoryDefault) {
+
     }
 
     @Override
     public void onInventoryClick(InventoryClickEvent event, Player player, InventoryDefault inventoryDefault) {
 
+    }
+
+    @Override
+    public boolean isUseCache() {
+        return false;
+    }
+
+    public void setUseCache(boolean useCache) {
+
+    }
+
+    @Override
+    public List<ButtonOption> getOptions() {
+        return null;
+    }
+
+    public void setOptions(List<ButtonOption> options) {
+
+    }
+
+    @Override
+    public boolean hasCustomRender() {
+        return false;
     }
 }

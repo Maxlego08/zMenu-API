@@ -42,7 +42,7 @@ public class NextLoader implements ButtonLoader {
     @Override
     public Button load(YamlConfiguration configuration, String path, DefaultButtonValue defaultButtonValue) {
         defaultButtonValue.setPermanent(true);
-        return new ZNextButton();
+        return new ZNextButton(this.manager);
     }
 
 }

@@ -3,35 +3,28 @@ package fr.maxlego08.menu.button.loader;
 import fr.maxlego08.menu.api.InventoryManager;
 import fr.maxlego08.menu.api.button.Button;
 import fr.maxlego08.menu.api.button.DefaultButtonValue;
-import fr.maxlego08.menu.api.button.buttons.PreviousButton;
 import fr.maxlego08.menu.api.loader.ButtonLoader;
-import fr.maxlego08.menu.button.buttons.ZPreviousButton;
+import fr.maxlego08.menu.button.buttons.ZJumpButton;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
-public class PreviousLoader implements ButtonLoader {
-
+public class JumpLoader implements ButtonLoader {
     private final Plugin plugin;
-    private final InventoryManager manager;
+    private final InventoryManager inventoryManager;
 
-    /**
-     * @param plugin
-     * @param manager
-     */
-    public PreviousLoader(Plugin plugin, InventoryManager manager) {
-        super();
+    public JumpLoader(Plugin plugin, InventoryManager inventoryManager) {
         this.plugin = plugin;
-        this.manager = manager;
+        this.inventoryManager = inventoryManager;
     }
 
     @Override
     public Class<? extends Button> getButton() {
-        return PreviousButton.class;
+        return ZJumpButton.class;
     }
 
     @Override
     public String getName() {
-        return "previous";
+        return "jump";
     }
 
     @Override
@@ -41,8 +34,7 @@ public class PreviousLoader implements ButtonLoader {
 
     @Override
     public Button load(YamlConfiguration configuration, String path, DefaultButtonValue defaultButtonValue) {
-        defaultButtonValue.setPermanent(true);
-        return new ZPreviousButton(this.manager);
+        int page = configuration.getInt(path + "toPage");
+        return new ZJumpButton(this.inventoryManager, page);
     }
-
 }

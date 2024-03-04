@@ -31,11 +31,6 @@ public interface Pattern {
      */
     Collection<Button> getButtons();
 
-    /**
-     * Enable multi page for pattern
-     *
-     * @return boolean
-     */
     boolean enableMultiPage();
 
 }

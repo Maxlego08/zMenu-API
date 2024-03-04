@@ -87,12 +87,12 @@ public interface Inventory {
     /**
      * Returns the maximum number of pages for the inventory.
      *
-     * @param buttons Button list
+     * @param patterns Pattern list
      * @param player  The player for whom the page count is determined.
      * @param objects Additional elements.
      * @return The maximum number of pages.
      */
-    int getMaxPage(List<Button> buttons, Player player, Object... objects);
+    int getMaxPage(Collection<Pattern> patterns, Player player, Object... objects);
 
     /**
      * Sorts the buttons based on the current page and additional elements.

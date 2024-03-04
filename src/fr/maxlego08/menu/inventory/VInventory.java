@@ -116,4 +116,5 @@ public abstract class VInventory implements Cloneable, InventoryHolder {
     public ItemButton addItem(int slot, ItemStack itemStack, Boolean enableAntiDupe) {
         return null;
     }
+
 }
