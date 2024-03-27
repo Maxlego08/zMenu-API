@@ -3,12 +3,13 @@ package fr.maxlego08.menu.api.requirement;
 import fr.maxlego08.menu.api.button.Button;
 import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
+import fr.maxlego08.menu.zcore.utils.ZUtils;
 import org.bukkit.entity.Player;
 
 /**
  * Represents an action that can be executed based on certain conditions.
  */
-public abstract class Action {
+public abstract class Action extends ZUtils {
 
     private int delay;
 
