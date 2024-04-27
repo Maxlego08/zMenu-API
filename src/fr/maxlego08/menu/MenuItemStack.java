@@ -18,6 +18,10 @@ import java.util.Map;
 
 public class MenuItemStack {
 
+    public static MenuItemStack fromItemStack(InventoryManager manager, ItemStack itemStack) {
+        return null;
+    }
+
     /**
      * @return the inventoryManager
      */
