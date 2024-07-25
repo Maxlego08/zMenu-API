@@ -18,6 +18,10 @@ import java.util.Map;
 
 public class MenuItemStack {
 
+    public MenuItemStack(InventoryManager inventoryManager, String filePath, String path) {
+    }
+
+
     public static MenuItemStack fromItemStack(InventoryManager manager, ItemStack itemStack) {
         return null;
     }
@@ -292,5 +296,19 @@ public class MenuItemStack {
     public void setNeedPlaceholderAPI(boolean needPlaceholderAPI) {
 
     }
+    public Map<String, String> getTranslatedDisplayName() {
+        return null;
+    }
 
+    public void setTranslatedDisplayName(Map<String, String> translatedDisplayName) {
+
+    }
+
+    public Map<String, List<String>> getTranslatedLore() {
+        return null;
+    }
+
+    public void setTranslatedLore(Map<String, List<String>> translatedLore) {
+
+    }
 }
