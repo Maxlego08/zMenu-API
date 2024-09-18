@@ -47,6 +47,7 @@ public enum PlaceholderAction {
                 return action;
             }
         }
+
         return null;
     }
 
