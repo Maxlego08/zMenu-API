@@ -119,11 +119,23 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
 
     /**
      * Called when the player opens the inventory.
+     * @deprecated Use onInventoryOpen(Player, InventoryDefault, Placeholders)
+     * @since 1.0.3.4
      *
      * @param player    The player.
      * @param inventory The inventory.
      */
+    @Deprecated
     void onInventoryOpen(Player player, InventoryDefault inventory);
+
+    /**
+     * Called when the player opens the inventory.
+     *
+     * @param player    The player.
+     * @param inventory The inventory.
+     * @param placeholders Placeholders value.
+     */
+    void onInventoryOpen(Player player, InventoryDefault inventory, Placeholders placeholders);
 
     /**
      * Called when the player closes the inventory.
@@ -183,6 +195,14 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
      * @return True if the button needs to be updated, false otherwise.
      */
     boolean isUpdated();
+
+    /**
+     * Indicates whether the master button need to be updated.
+     *
+     * @return true if the master button need to be updated, false otherwise
+     */
+    boolean isUpdatedMasterButton();
+
 
     /**
      * Checks if the button should be refreshed on click.
@@ -283,9 +303,27 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
      */
     void onInventoryClick(InventoryClickEvent event, Player player, InventoryDefault inventoryDefault);
 
+    /**
+     * Checks if the cache is being used.
+     *
+     * @return true if the cache is in use, false otherwise
+     */
     boolean isUseCache();
 
+    /**
+     * Retrieves a list of button options.
+     *
+     * @return a List of ButtonOption objects
+     */
     List<ButtonOption> getOptions();
 
+    /**
+     * Checks if custom rendering is enabled.
+     *
+     * @return true if custom rendering is enabled, false otherwise
+     */
     boolean hasCustomRender();
+
+    boolean isOpenAsync();
+
 }

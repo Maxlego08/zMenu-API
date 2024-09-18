@@ -2,6 +2,8 @@ package fr.maxlego08.menu;
 
 import fr.maxlego08.menu.api.InventoryManager;
 import fr.maxlego08.menu.api.attribute.IAttribute;
+import fr.maxlego08.menu.api.enums.MenuItemRarity;
+import fr.maxlego08.menu.api.itemstack.TrimConfiguration;
 import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.zcore.utils.Banner;
 import fr.maxlego08.menu.zcore.utils.Firework;
@@ -17,6 +19,10 @@ import java.util.List;
 import java.util.Map;
 
 public class MenuItemStack {
+
+    public MenuItemStack(InventoryManager inventoryManager, String filePath, String path) {
+    }
+
 
     public static MenuItemStack fromItemStack(InventoryManager manager, ItemStack itemStack) {
         return null;
@@ -289,8 +295,147 @@ public class MenuItemStack {
         return 0;
     }
 
+    public Map<String, String> getTranslatedDisplayName() {
+        return null;
+    }
+
+    public void setTranslatedDisplayName(Map<String, String> translatedDisplayName) {
+
+    }
+
+    public Map<String, List<String>> getTranslatedLore() {
+        return null;
+    }
+
+    public void setTranslatedLore(Map<String, List<String>> translatedLore) {
+
+    }
+
+    public boolean isNeedPlaceholderAPI() {
+        return false;
+    }
+
     public void setNeedPlaceholderAPI(boolean needPlaceholderAPI) {
 
     }
 
+    public ItemStack getCacheItemStack() {
+        return null;
+    }
+
+    public void setCacheItemStack(ItemStack cacheItemStack) {
+
+    }
+
+    public int getMaxStackSize() {
+        return 0;
+    }
+
+    public void setMaxStackSize(int maxStackSize) {
+
+    }
+
+    public int getMaxDamage() {
+        return 0;
+    }
+
+    public void setMaxDamage(int maxDamage) {
+
+    }
+
+    public int getDamage() {
+        return 0;
+    }
+
+    public void setDamage(int damage) {
+
+    }
+
+    public int getRepairCost() {
+        return 0;
+    }
+
+    public void setRepairCost(int repairCost) {
+
+    }
+
+    public boolean isUnbreakableEnabled() {
+        return false;
+    }
+
+    public void setUnbreakableEnabled(Boolean unbreakableEnabled) {
+
+    }
+
+    public boolean isUnbreakableShowInTooltip() {
+        return false;
+    }
+
+    public void setUnbreakableShowInTooltip(Boolean unbreakableShowInTooltip) {
+
+    }
+
+    public boolean isFireResistant() {
+        return false;
+    }
+
+    public void setFireResistant(Boolean fireResistant) {
+
+    }
+
+    public boolean isHideTooltip() {
+        return false;
+    }
+
+    public void setHideTooltip(Boolean hideTooltip) {
+
+    }
+
+    public boolean isHideAdditionalTooltip() {
+        return false;
+    }
+
+    public void setHideAdditionalTooltip(Boolean hideAdditionalTooltip) {
+
+    }
+
+    public boolean isEnchantmentGlint() {
+        return false;
+    }
+
+    public void setEnchantmentGlint(Boolean enchantmentGlint) {
+
+    }
+
+    public boolean isEnchantmentShowInTooltip() {
+        return false;
+    }
+
+    public void setEnchantmentShowInTooltip(Boolean enchantmentShowInTooltip) {
+
+    }
+
+    public boolean isAttributeShowInTooltip() {
+        return false;
+    }
+
+    public void setAttributeShowInTooltip(Boolean attributeShowInTooltip) {
+
+    }
+
+    public MenuItemRarity getItemRarity() {
+        return null;
+    }
+
+    public void setItemRarity(MenuItemRarity itemRarity) {
+
+    }
+
+    public TrimConfiguration getTrimConfiguration() {
+        return null;
+    }
+
+    public void setTrimConfiguration(TrimConfiguration trimConfiguration) {
+
+    }
 }

@@ -1,6 +1,7 @@
 package fr.maxlego08.menu.button;
 
 import fr.maxlego08.menu.api.button.PerformButton;
+import fr.maxlego08.menu.api.scheduler.ZScheduler;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -90,7 +91,7 @@ public abstract class ZPerformButton extends ZSlotButton implements PerformButto
     }
 
     @Override
-    public void execute(Player player, ClickType type) {
+    public void execute(Player player, ClickType type, ZScheduler scheduler) {
 
         if (type.equals(ClickType.RIGHT)) {
             this.execute(player, player, this.consoleRightCommands);

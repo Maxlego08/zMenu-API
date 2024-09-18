@@ -2,7 +2,6 @@ package fr.maxlego08.menu.api.requirement.permissible;
 
 import fr.maxlego08.menu.MenuItemStack;
 import fr.maxlego08.menu.api.requirement.Permissible;
-import org.bukkit.Material;
 
 /**
  * Represents a condition where a player is required to have a specific item.

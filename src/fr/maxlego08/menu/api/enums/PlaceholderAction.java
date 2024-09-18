@@ -13,7 +13,7 @@ public enum PlaceholderAction {
 
     BOOLEAN("b="),
 
-    EQUALS_STRING("s="), EQUALSIGNORECASE_STRING("s=="), CONTAINS_STRING("sc"),
+    EQUALS_STRING("s="), DIFFERENT_STRING("s!="), EQUALSIGNORECASE_STRING("s=="), CONTAINS_STRING("sc"),
 
     EQUAL_TO("=="),
 
@@ -47,6 +47,7 @@ public enum PlaceholderAction {
                 return action;
             }
         }
+
         return null;
     }
 
@@ -56,7 +57,7 @@ public enum PlaceholderAction {
      * @return boolean
      */
     public boolean isString() {
-        return this == EQUALS_STRING || this == EQUALSIGNORECASE_STRING || this == CONTAINS_STRING;
+        return this == EQUALS_STRING || this == EQUALSIGNORECASE_STRING || this == CONTAINS_STRING | this == DIFFERENT_STRING;
     }
 
 }

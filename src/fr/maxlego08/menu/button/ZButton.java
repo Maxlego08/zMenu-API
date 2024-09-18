@@ -140,6 +140,11 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     @Override
+    public void onInventoryOpen(Player player, InventoryDefault inventory, Placeholders placeholders) {
+
+    }
+
+    @Override
     public boolean closeInventory() {
         return false;
     }
@@ -289,4 +294,15 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     public boolean hasCustomRender() {
         return false;
     }
+
+    @Override
+    public boolean isOpenAsync() {
+        return false;
+    }
+
+    @Override
+    public boolean isUpdatedMasterButton() {
+        return false;
+    }
 }
+

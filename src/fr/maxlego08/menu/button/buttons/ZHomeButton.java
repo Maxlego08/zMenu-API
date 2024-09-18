@@ -31,7 +31,7 @@ public class ZHomeButton extends ZBackButton implements HomeButton {
     }
 
     @Override
-    public void onInventoryOpen(Player player, InventoryDefault inventory) {
+    public void onInventoryOpen(Player player, InventoryDefault inventory, Placeholders placeholders) {
 
         List<Inventory> oldInventories = inventory.getOldInventories();
         if (!oldInventories.isEmpty()) {

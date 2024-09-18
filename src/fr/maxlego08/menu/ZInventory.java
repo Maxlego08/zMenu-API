@@ -17,6 +17,7 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -33,6 +34,11 @@ public class ZInventory implements Inventory {
 
     @Override
     public String getName() {
+        return null;
+    }
+
+    @Override
+    public String getName(Player player) {
         return null;
     }
 
@@ -123,6 +129,11 @@ public class ZInventory implements Inventory {
 
     @Override
     public OpenWithItem getOpenWithItem() {
+        return null;
+    }
+
+    @Override
+    public Map<String, String> getTranslatedName() {
         return null;
     }
 }
