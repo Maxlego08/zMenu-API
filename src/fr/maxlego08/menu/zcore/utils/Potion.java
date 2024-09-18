@@ -90,68 +90,7 @@ public class Potion {
      */
 
     public static Potion fromDamage(int damage) {
-        PotionType type;
-        switch (damage & POTION_BIT) {
-            case 0:
-                type = PotionType.WATER;
-                break;
-            case 1:
-                type = PotionType.REGEN;
-                break;
-            case 2:
-                type = PotionType.SPEED;
-                break;
-            case 3:
-                type = PotionType.FIRE_RESISTANCE;
-                break;
-            case 4:
-                type = PotionType.POISON;
-                break;
-            case 5:
-                type = PotionType.INSTANT_HEAL;
-                break;
-            case 6:
-                type = PotionType.NIGHT_VISION;
-                break;
-            case 8:
-                type = PotionType.WEAKNESS;
-                break;
-            case 9:
-                type = PotionType.STRENGTH;
-                break;
-            case 10:
-                type = PotionType.SLOWNESS;
-                break;
-            case 11:
-                type = PotionType.JUMP;
-                break;
-            case 12:
-                type = PotionType.INSTANT_DAMAGE;
-                break;
-            case 13:
-                type = PotionType.WATER_BREATHING;
-                break;
-            case 14:
-                type = PotionType.INVISIBILITY;
-                break;
-            default:
-                type = PotionType.WATER;
-        }
-        Potion potion;
-        if (type == PotionType.WATER) {
-            potion = new Potion(PotionType.WATER);
-        } else {
-            int level = (damage & TIER_BIT) >> TIER_SHIFT;
-            level++;
-            potion = new Potion(type, level);
-        }
-        if ((damage & SPLASH_BIT) != 0) {
-            potion = potion.splash();
-        }
-        if ((damage & EXTENDED_BIT) != 0) {
-            potion = potion.extend();
-        }
-        return potion;
+        return null;
     }
 
     /**
@@ -205,9 +144,7 @@ public class Potion {
      * @param to The itemstack to apply to
      */
     public void apply(ItemStack to) {
-        PotionMeta meta = (PotionMeta) to.getItemMeta();
-        meta.setBasePotionData(new PotionData(type, extended, level == 2));
-        to.setItemMeta(meta);
+
     }
 
     /**
