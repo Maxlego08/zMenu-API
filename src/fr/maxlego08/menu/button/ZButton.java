@@ -5,18 +5,21 @@ import fr.maxlego08.menu.api.Inventory;
 import fr.maxlego08.menu.api.button.Button;
 import fr.maxlego08.menu.api.button.ButtonOption;
 import fr.maxlego08.menu.api.requirement.Action;
+import fr.maxlego08.menu.api.requirement.RefreshRequirement;
 import fr.maxlego08.menu.api.requirement.Requirement;
 import fr.maxlego08.menu.api.requirement.data.ActionPlayerData;
 import fr.maxlego08.menu.api.sound.SoundOption;
 import fr.maxlego08.menu.api.utils.OpenLink;
 import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
+import fr.maxlego08.menu.zcore.utils.inventory.Pagination;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
+import java.util.function.BiConsumer;
 
 public abstract class ZButton extends ZPlaceholderButton implements Button {
 
@@ -278,7 +281,6 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     public void setUseCache(boolean useCache) {
-
     }
 
     @Override
@@ -287,7 +289,6 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     public void setOptions(List<ButtonOption> options) {
-
     }
 
     @Override
@@ -296,13 +297,57 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     @Override
+    public boolean isUpdatedMasterButton() {
+        return false;
+    }
+
+    public void setMasterButtonUpdated(boolean masterButtonUpdated) {
+    }
+
+    @Override
     public boolean isOpenAsync() {
         return false;
     }
 
+    public void setOpenAsync(boolean openAsync) {
+
+    }
+
     @Override
-    public boolean isUpdatedMasterButton() {
+    public boolean hasRefreshRequirement() {
         return false;
+    }
+
+    @Override
+    public RefreshRequirement getRefreshRequirement() {
+        return null;
+    }
+
+    public void setRefreshRequirement(RefreshRequirement refreshRequirement) {
+
+    }
+
+    @Override
+    public int getPriority() {
+        return 0;
+    }
+
+    public void setPriority(int priority) {
+
+    }
+
+    /**
+     * Paginate a given list of elements and set them as elements of this button
+     * according to the page of the inventory.
+     *
+     * @param elements    the elements to paginate
+     * @param inventory   the inventory to get the page from
+     * @param consumer    a consumer that will be used to set the elements, it will
+     *                    be called with the slot of the element and the element
+     *                    itself
+     * @param <T>         the type of the elements
+     */
+    protected <T> void paginate(List<T> elements, InventoryDefault inventory, BiConsumer<Integer, T> consumer) {
     }
 }
 
