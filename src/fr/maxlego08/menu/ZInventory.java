@@ -10,12 +10,14 @@ import fr.maxlego08.menu.inventory.VInventory;
 import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import fr.maxlego08.menu.zcore.utils.inventory.InventoryResult;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -133,7 +135,12 @@ public class ZInventory implements Inventory {
     }
 
     @Override
-    public Map<String, String> getTranslatedName() {
+    public Map<String, String> getTranslatedNames() {
+        return new HashMap<>();
+    }
+
+    @Override
+    public InventoryType getType() {
         return null;
     }
 }

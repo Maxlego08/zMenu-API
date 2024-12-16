@@ -53,6 +53,10 @@
                   <pattern>com.cryptomorin.xseries</pattern>
                   <shadedPattern>fr.maxlego08.menu.zcore.utils.xseries</shadedPattern>
                 </relocation>
+                <relocation>
+                  <pattern>fr.traqueur.currencies</pattern>
+                  <shadedPattern>fr.maxlego08.menu.zcore.utils.currencies</shadedPattern>
+                </relocation>
               </relocations>
             </configuration>
           </execution>
