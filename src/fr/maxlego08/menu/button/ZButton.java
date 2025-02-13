@@ -138,11 +138,6 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     @Override
-    public void onInventoryOpen(Player player, InventoryDefault inventory) {
-
-    }
-
-    @Override
     public void onInventoryOpen(Player player, InventoryDefault inventory, Placeholders placeholders) {
 
     }
