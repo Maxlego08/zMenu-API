@@ -344,5 +344,15 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
      */
     protected <T> void paginate(List<T> elements, InventoryDefault inventory, BiConsumer<Integer, T> consumer) {
     }
+
+    @Override
+    public void setPlayerInventory(boolean playerInventory) {
+
+    }
+
+    @Override
+    public boolean isPlayerInventory() {
+        return false;
+    }
 }
 

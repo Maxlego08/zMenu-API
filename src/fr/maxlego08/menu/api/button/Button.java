@@ -341,4 +341,18 @@ public interface Button extends PermissibleButton, PlaceholderButton, SlotButton
      * @return The priority of the button, which is used to determine the order in which buttons are processed
      */
     int getPriority();
+
+    /**
+     * Return true if the button is in the player's inventory, this feature is available with zMenu+
+     *
+     * @return true if the button is in the player's inventory
+     */
+    boolean isPlayerInventory();
+
+    /**
+     * Sets whether the button is in the player's inventory.
+     *
+     * @param playerInventory True if the button is in the player's inventory, false otherwise.
+     */
+    void setPlayerInventory(boolean playerInventory);
 }
