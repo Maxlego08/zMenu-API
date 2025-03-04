@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nullable;
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -437,5 +438,9 @@ public class MenuItemStack {
 
     public void setTrimConfiguration(TrimConfiguration trimConfiguration) {
 
+    }
+
+    public static MenuItemStack fromMap(InventoryManager inventoryManager, File file, String path, Map<String, Object> map) {
+        return null;
     }
 }

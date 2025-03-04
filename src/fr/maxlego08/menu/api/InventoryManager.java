@@ -14,6 +14,7 @@ import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import fr.maxlego08.menu.zcore.utils.storage.Savable;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
@@ -485,4 +486,11 @@ public interface InventoryManager extends Savable, Listener {
      */
     FontImage getFontImage();
 
+    /**
+     * Loads a YAML configuration file and applies global placeholders.
+     *
+     * @param file The YAML file to load.
+     * @return The loaded YAML configuration.
+     */
+    YamlConfiguration loadYamlConfiguration(File file);
 }

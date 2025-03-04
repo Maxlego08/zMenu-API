@@ -138,11 +138,6 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
     }
 
     @Override
-    public void onInventoryOpen(Player player, InventoryDefault inventory) {
-
-    }
-
-    @Override
     public void onInventoryOpen(Player player, InventoryDefault inventory, Placeholders placeholders) {
 
     }
@@ -348,6 +343,16 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
      * @param <T>         the type of the elements
      */
     protected <T> void paginate(List<T> elements, InventoryDefault inventory, BiConsumer<Integer, T> consumer) {
+    }
+
+    @Override
+    public void setPlayerInventory(boolean playerInventory) {
+
+    }
+
+    @Override
+    public boolean isPlayerInventory() {
+        return false;
     }
 }
 
