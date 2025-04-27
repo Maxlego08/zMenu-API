@@ -9,8 +9,6 @@ import fr.maxlego08.menu.inventory.inventories.InventoryDefault;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import java.util.ArrayList;
-
 public class ZNextButton extends ZButton implements HomeButton {
 
     private final InventoryManager inventoryManager;
@@ -28,8 +26,7 @@ public class ZNextButton extends ZButton implements HomeButton {
         super.onClick(player, event, inventory, slot, placeholders);
         if (inventory.getPage() != inventory.getMaxPage()) {
             Inventory toInventory = inventory.getMenuInventory();
-            this.inventoryManager.openInventory(player, toInventory, inventory.getPage() + 1,
-                    new ArrayList<>());
+            this.inventoryManager.openInventory(player, toInventory, event.isLeftClick() ? inventory.getPage() + 1 : inventory.getMaxPage(), inventory.getOldInventories());
         }
     }
 

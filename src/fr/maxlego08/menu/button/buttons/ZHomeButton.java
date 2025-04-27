@@ -27,7 +27,6 @@ public class ZHomeButton extends ZBackButton implements HomeButton {
 
         Inventory toInventory = this.inventory;
         this.inventoryManager.openInventory(player, toInventory, 1, new ArrayList<>());
-
     }
 
     @Override
@@ -37,7 +36,6 @@ public class ZHomeButton extends ZBackButton implements HomeButton {
         if (!oldInventories.isEmpty()) {
             this.inventory = oldInventories.get(0);
         }
-
     }
 
 }

@@ -2,6 +2,7 @@ package fr.maxlego08.menu.inventory;
 
 import fr.maxlego08.menu.zcore.utils.inventory.ItemButton;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;

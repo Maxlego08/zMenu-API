@@ -4,6 +4,7 @@ import fr.maxlego08.menu.api.InventoryManager;
 import fr.maxlego08.menu.api.attribute.IAttribute;
 import fr.maxlego08.menu.api.enums.MenuItemRarity;
 import fr.maxlego08.menu.api.itemstack.TrimConfiguration;
+import fr.maxlego08.menu.api.utils.LoreType;
 import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.menu.zcore.utils.Banner;
 import fr.maxlego08.menu.zcore.utils.Firework;
@@ -26,6 +27,10 @@ public class MenuItemStack {
 
 
     public static MenuItemStack fromItemStack(InventoryManager manager, ItemStack itemStack) {
+        return null;
+    }
+
+    public static MenuItemStack fromMap(InventoryManager inventoryManager, File file, String path, Map<String, Object> map) {
         return null;
     }
 
@@ -440,7 +445,27 @@ public class MenuItemStack {
 
     }
 
-    public static MenuItemStack fromMap(InventoryManager inventoryManager, File file, String path, Map<String, Object> map) {
+    public boolean isCenterLore() {
+        return false;
+    }
+
+    public void setCenterLore(boolean centerLore) {
+
+    }
+
+    public boolean isCenterName() {
+        return false;
+    }
+
+    public void setCenterName(boolean centerName) {
+
+    }
+
+    public LoreType getLoreType() {
         return null;
+    }
+
+    public void setLoreType(LoreType loreType) {
+
     }
 }
