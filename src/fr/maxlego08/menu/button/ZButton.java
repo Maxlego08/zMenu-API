@@ -18,29 +18,53 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
 public abstract class ZButton extends ZPlaceholderButton implements Button {
 
+    private String buttonName;
+    private MenuItemStack itemStack;
+    private boolean isPermanent = false;
+    private boolean closeInventory = false;
+    private boolean useCache = true;
+    private List<String> messages = new ArrayList<>();
+    private SoundOption soundOption;
+    private String playerHead;
+    private OpenLink openLink = null;
+    private boolean isUpdated = false;
+    private boolean isMasterButtonUpdated = false;
+    private boolean refreshOnClick = false;
+    private List<ActionPlayerData> datas = new ArrayList<>();
+    private boolean updateOnClick = false;
+    private boolean isOpenAsync = false;
+    private List<Requirement> clickRequirements = new ArrayList<>();
+    private Requirement viewRequirement = null;
+    private List<Action> actions = new ArrayList<>();
+    private List<ButtonOption> options = new ArrayList<>();
+    private RefreshRequirement refreshRequirement;
+    private int priority; // only use for convert DeluxeMenus config to zmenu object
+    private boolean isInPlayerInventory;
+
     @Override
     public String getName() {
-        return null;
+        return this.buttonName;
     }
 
     @Override
     public MenuItemStack getItemStack() {
-        return null;
+        return this.itemStack;
     }
 
     /**
      * @param itemStack the itemStack to set
      */
     public ZButton setItemStack(MenuItemStack itemStack) {
+        this.itemStack = itemStack;
         return this;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public ItemStack getCustomItemStack(Player player) {
         return null;
@@ -48,13 +72,15 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
 
     @Override
     public int getSlot() {
-        return 0;
+        return this.slots.get(0);
     }
 
     /**
      * @param slot the slot to set
      */
     public ZButton setSlot(int slot) {
+        this.slots = new ArrayList<>();
+        this.slots.add(slot);
         return this;
     }
 
@@ -65,49 +91,50 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
 
     @Override
     public boolean isPermanent() {
-        return false;
+        return this.isPermanent;
     }
 
     /**
      * @param isPermanent the isPermanent to set
      */
     public ZButton setPermanent(boolean isPermanent) {
+        this.isPermanent = isPermanent;
         return this;
     }
 
     @Override
     public List<String> getMessages() {
-        return null;
+        return this.messages;
     }
 
-    /**
-     * @param messages
-     */
     public ZButton setMessages(List<String> messages) {
+        this.messages = messages;
         return this;
     }
 
     @Override
     public int getRealSlot(int inventorySize, int page) {
-        return 0;
+        int slot = getSlot();
+        return this.isPermanent() ? slot : slot - ((page - 1) * inventorySize);
     }
 
     @Override
     public SoundOption getSound() {
-        return null;
+        return this.soundOption;
     }
 
     @Override
     public boolean hasSpecialRender() {
-        return this.getSlots().size() > 0;
+        return this.getSlots().size() > 1;
     }
 
     @Override
     public String getPlayerHead() {
-        return null;
+        return this.playerHead;
     }
 
     public ZButton setPlayerHead(String playerHead) {
+        this.playerHead = playerHead;
         return this;
     }
 
@@ -134,7 +161,6 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
 
     @Override
     public void onClick(Player player, InventoryClickEvent event, InventoryDefault inventory, int slot, Placeholders placeholders) {
-
     }
 
     @Override
@@ -144,83 +170,77 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
 
     @Override
     public boolean closeInventory() {
-        return false;
+        return this.closeInventory;
     }
 
-    /**
-     * @param buttonName the buttonName to set
-     */
     public ZButton setButtonName(String buttonName) {
+        this.buttonName = buttonName;
         return this;
     }
 
-    /**
-     * @param closeInventory
-     */
     public ZButton setCloseInventory(boolean closeInventory) {
+        this.closeInventory = closeInventory;
         return this;
     }
 
-    /**
-     * @param soundOption
-     */
     public ZButton setSoundOption(SoundOption soundOption) {
+        this.soundOption = soundOption;
         return this;
     }
 
     @Override
     public OpenLink getOpenLink() {
-        return null;
+        return this.openLink;
     }
 
     public void setOpenLink(OpenLink openLink) {
-
+        this.openLink = openLink;
     }
 
     @Override
     public boolean isUpdated() {
-        return false;
+        return this.isUpdated;
     }
 
     public void setUpdated(boolean isUpdated) {
-
+        this.isUpdated = isUpdated;
     }
 
     @Override
     public boolean isRefreshOnClick() {
-        return false;
+        return this.refreshOnClick;
     }
 
     public void setRefreshOnClick(boolean refreshOnClick) {
-
+        this.refreshOnClick = refreshOnClick;
     }
 
     @Override
     public List<ActionPlayerData> getData() {
-        return null;
+        return this.datas;
     }
 
     public void setDatas(List<ActionPlayerData> datas) {
-
+        this.datas = datas;
     }
 
     @Override
     public boolean updateOnClick() {
-        return false;
+        return this.updateOnClick;
     }
 
     public void setUpdateOnClick(boolean updateOnClick) {
-
+        this.updateOnClick = updateOnClick;
     }
 
     @Override
     public List<String> buildLore(Player player) {
-        return null;
+        return this.itemStack.getLore();
     }
 
     @Override
     public String buildDisplayName(Player player) {
-        return null;
+        return this.itemStack.getDisplayName();
     }
 
     @Override
@@ -229,35 +249,39 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
 
     @Override
     public List<Requirement> getClickRequirements() {
-        return null;
+        return this.clickRequirements;
     }
 
     public void setClickRequirements(List<Requirement> clickRequirements) {
-
+        this.clickRequirements = clickRequirements;
     }
 
     @Override
     public Requirement getViewRequirement() {
-        return null;
+        return this.viewRequirement;
     }
 
     public void setViewRequirement(Requirement viewRequirement) {
-
+        this.viewRequirement = viewRequirement;
     }
 
     @Override
     public boolean hasPermission() {
-        return false;
+        return this.viewRequirement != null || super.hasPermission();
     }
 
     @Override
     public boolean checkPermission(Player player, InventoryDefault inventory, Placeholders placeholders) {
-        return false;
+        return super.checkPermission(player, inventory, placeholders) && (this.viewRequirement == null || this.viewRequirement.execute(player, this, inventory, placeholders));
     }
 
     @Override
     public List<Action> getActions() {
-        return null;
+        return this.actions;
+    }
+
+    public void setActions(List<Action> actions) {
+        this.actions = actions;
     }
 
     @Override
@@ -272,18 +296,20 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
 
     @Override
     public boolean isUseCache() {
-        return false;
+        return this.useCache;
     }
 
     public void setUseCache(boolean useCache) {
+        this.useCache = useCache;
     }
 
     @Override
     public List<ButtonOption> getOptions() {
-        return null;
+        return this.options;
     }
 
     public void setOptions(List<ButtonOption> options) {
+        this.options = options;
     }
 
     @Override
@@ -293,66 +319,74 @@ public abstract class ZButton extends ZPlaceholderButton implements Button {
 
     @Override
     public boolean isUpdatedMasterButton() {
-        return false;
+        return this.isMasterButtonUpdated;
     }
 
     public void setMasterButtonUpdated(boolean masterButtonUpdated) {
+        isMasterButtonUpdated = masterButtonUpdated;
     }
 
     @Override
     public boolean isOpenAsync() {
-        return false;
+        return isOpenAsync;
     }
 
     public void setOpenAsync(boolean openAsync) {
-
+        isOpenAsync = openAsync;
     }
 
     @Override
     public boolean hasRefreshRequirement() {
-        return false;
+        return this.refreshRequirement != null;
     }
 
     @Override
     public RefreshRequirement getRefreshRequirement() {
-        return null;
+        return refreshRequirement;
     }
 
     public void setRefreshRequirement(RefreshRequirement refreshRequirement) {
-
+        this.refreshRequirement = refreshRequirement;
     }
 
     @Override
     public int getPriority() {
-        return 0;
+        return priority;
     }
 
     public void setPriority(int priority) {
-
+        this.priority = priority;
     }
 
     /**
      * Paginate a given list of elements and set them as elements of this button
      * according to the page of the inventory.
      *
-     * @param elements    the elements to paginate
-     * @param inventory   the inventory to get the page from
-     * @param consumer    a consumer that will be used to set the elements, it will
-     *                    be called with the slot of the element and the element
-     *                    itself
-     * @param <T>         the type of the elements
+     * @param elements  the elements to paginate
+     * @param inventory the inventory to get the page from
+     * @param consumer  a consumer that will be used to set the elements, it will
+     *                  be called with the slot of the element and the element
+     *                  itself
+     * @param <T>       the type of the elements
      */
     protected <T> void paginate(List<T> elements, InventoryDefault inventory, BiConsumer<Integer, T> consumer) {
-    }
+        Pagination<T> pagination = new Pagination<>();
+        elements = pagination.paginate(elements, this.slots.size(), inventory.getPage());
 
-    @Override
-    public void setPlayerInventory(boolean playerInventory) {
-
+        for (int i = 0; i != Math.min(elements.size(), this.slots.size()); i++) {
+            int slot = slots.get(i);
+            T element = elements.get(i);
+            consumer.accept(slot, element);
+        }
     }
 
     @Override
     public boolean isPlayerInventory() {
-        return false;
+        return this.isInPlayerInventory;
+    }
+
+    @Override
+    public void setPlayerInventory(boolean inPlayerInventory) {
+        isInPlayerInventory = inPlayerInventory;
     }
 }
-

@@ -5,7 +5,6 @@ public enum MenuItemRarity {
     COMMON,
     UNCOMMON,
     RARE,
-    EPIC
-
+    EPIC;
 
 }

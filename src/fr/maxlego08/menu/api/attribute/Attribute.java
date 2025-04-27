@@ -72,12 +72,14 @@ public class Attribute implements IAttribute {
 			this.key = key;
 		}
 
+		
 		public String getKey() {
 			return key;
 		}
 	}
 
-	public static Attribute.Builder builder(Type type, double amount) {
+	
+	public static Builder builder(Type type, double amount) {
 		return new Builder(type, amount);
 	}
 
@@ -93,6 +95,7 @@ public class Attribute implements IAttribute {
 			this.type = type;
 		}
 
+		
 		public Attribute build() {
 			return new Attribute(type, uuid, name, amount, slot);
 		}
@@ -125,7 +128,7 @@ public class Attribute implements IAttribute {
 	private final double amount;
 	private final EquipmentSlot slot;
 
-	Attribute(Attribute.Type type, UUID uuid, String name, double amount, EquipmentSlot slot) {
+	Attribute( Type type, UUID uuid, String name, double amount, EquipmentSlot slot) {
 		this.type = type;
 		this.uuid = uuid;
 		this.name = name;
@@ -158,7 +161,8 @@ public class Attribute implements IAttribute {
 		return slot;
 	}
 
-	public static Attribute deserialize(Map<String, Object> map) {
+	
+	public static Attribute deserialize( Map<String, Object> map) {
 		if (!map.containsKey(TYPE) || map.get(TYPE) == null) {
 			throw new IllegalArgumentException(String.format("The '%s' field is missing or null", TYPE));
 		}

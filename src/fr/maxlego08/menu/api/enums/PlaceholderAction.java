@@ -1,5 +1,6 @@
 package fr.maxlego08.menu.api.enums;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,10 @@ public enum PlaceholderAction {
 
     BOOLEAN("b="),
 
-    EQUALS_STRING("s="), DIFFERENT_STRING("s!="), EQUALSIGNORECASE_STRING("s=="), CONTAINS_STRING("sc"),
+    EQUALS_STRING("s="),
+    DIFFERENT_STRING("s!="),
+    EQUALSIGNORECASE_STRING("s=="),
+    CONTAINS_STRING("sc"),
 
     EQUAL_TO("=="),
 
@@ -47,7 +51,6 @@ public enum PlaceholderAction {
                 return action;
             }
         }
-
         return null;
     }
 

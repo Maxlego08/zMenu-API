@@ -44,12 +44,12 @@ public interface Requirement {
 
     /**
      * Executes the requirement. If the player has permission, the method will return true,
-     * and the success actions will be executed. Otherwise, the deny actions will be executed.
+     * and the success actions will be executed. Otherwise, the denied actions will be executed.
      *
      * @param player       The player.
-     * @param button       The Button, can be nullable
+     * @param button       The Button can be nullable
      * @param inventory    The Inventory.
-     * @param placeholders
+     * @param placeholders The placeholders.
      * @return True if the player has permission.
      */
     boolean execute(Player player, Button button, InventoryDefault inventory, Placeholders placeholders);

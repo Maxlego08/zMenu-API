@@ -2,20 +2,24 @@ package fr.maxlego08.menu.button;
 
 import fr.maxlego08.menu.api.button.PerformButton;
 import fr.maxlego08.menu.api.scheduler.ZScheduler;
+import fr.maxlego08.menu.api.utils.Placeholders;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ZPerformButton extends ZSlotButton implements PerformButton {
 
-    private List<String> commands;
-    private List<String> consoleCommands;
-    private List<String> consoleRightCommands;
-    private List<String> consoleLeftCommands;
-    private List<String> consolePermissionCommands;
+    private List<String> commands = new ArrayList<>();
+    private List<String> leftCommands = new ArrayList<>();
+    private List<String> rightCommands = new ArrayList<>();
+    private List<String> consoleCommands = new ArrayList<>();
+    private List<String> consoleRightCommands = new ArrayList<>();
+    private List<String> consoleLeftCommands = new ArrayList<>();
+    private List<String> consolePermissionCommands = new ArrayList<>();
     private String consolePermission;
 
     @Override
@@ -29,6 +33,29 @@ public abstract class ZPerformButton extends ZSlotButton implements PerformButto
     public void setCommands(List<String> commands) {
         this.commands = commands;
     }
+
+    public List<String> getLeftCommands() {
+        return this.leftCommands;
+    }
+
+    /**
+     * @param leftCommands the left click commands to set
+     */
+    public void setLeftCommands(List<String> leftCommands) {
+        this.leftCommands = leftCommands;
+    }
+
+    public List<String> getRightCommands() {
+        return this.rightCommands;
+    }
+
+    /**
+     * @param rightCommands the right click commands to set
+     */
+    public void setRightCommands(List<String> rightCommands) {
+        this.rightCommands = rightCommands;
+    }
+
 
     @Override
     public List<String> getConsoleCommands() {
@@ -91,32 +118,34 @@ public abstract class ZPerformButton extends ZSlotButton implements PerformButto
     }
 
     @Override
-    public void execute(Player player, ClickType type, ZScheduler scheduler) {
-
-        if (type.equals(ClickType.RIGHT)) {
-            this.execute(player, player, this.consoleRightCommands);
+    public void execute(Player player, ClickType type, ZScheduler scheduler, Placeholders placeholders) {
+        if (type.isRightClick()) {
+            this.execute(player, player, this.rightCommands, scheduler, placeholders);
+            this.execute(player, player, this.consoleRightCommands, scheduler, placeholders);
         }
 
-        if (type.equals(ClickType.LEFT)) {
-            this.execute(player, player, this.consoleLeftCommands);
+        if (type.isLeftClick()) {
+            this.execute(player, player, this.leftCommands, scheduler, placeholders);
+            this.execute(player, player, this.consoleLeftCommands, scheduler, placeholders);
         }
 
-        this.execute(player, player, this.commands);
-        this.execute(Bukkit.getConsoleSender(), player, this.consoleCommands);
+        this.execute(player, player, this.commands, scheduler, placeholders);
+        this.execute(Bukkit.getConsoleSender(), player, this.consoleCommands, scheduler, placeholders);
 
         if (this.consolePermission == null || player.hasPermission(this.consolePermission)) {
-            this.execute(Bukkit.getConsoleSender(), player, this.consolePermissionCommands);
+            this.execute(Bukkit.getConsoleSender(), player, this.consolePermissionCommands, scheduler, placeholders);
         }
     }
 
     /**
-     * Allows you to execute a list of commands
+     * Executes a list of commands on behalf of the specified executor and player, using a scheduler to run the commands.
      *
-     * @param executor
-     * @param player
-     * @param strings
+     * @param executor  the CommandSender executing the commands
+     * @param player    the Player for whom the commands are executed
+     * @param strings   the list of commands to be executed
+     * @param scheduler the ZScheduler used to schedule the command executions
      */
-    private void execute(CommandSender executor, Player player, List<String> strings) {
+    private void execute(CommandSender executor, Player player, List<String> strings, ZScheduler scheduler, Placeholders placeholders) {
 
     }
 }

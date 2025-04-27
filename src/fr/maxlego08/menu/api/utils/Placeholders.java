@@ -17,37 +17,63 @@ public class Placeholders {
         this(new HashMap<>());
     }
 
+    /**
+     * Registers a placeholder with the given key and value.
+     *
+     * @param key   the key of the placeholder.
+     * @param value the value of the placeholder.
+     */
     public void register(String key, String value) {
         this.placeholders.put(key, value);
     }
 
+    /**
+     * Gets the map of placeholders.
+     *
+     * @return the map of placeholders.
+     */
     public Map<String, String> getPlaceholders() {
         return placeholders;
     }
 
+    /**
+     * Replace all placeholders in each string of the given list by their respective values.
+     *
+     * @param strings the list of strings to parse
+     * @return the list of parsed strings
+     */
     public List<String> parse(List<String> strings) {
         return strings.stream().map(this::parse).collect(Collectors.toList());
     }
 
+    /**
+     * Replace all placeholders in the given string by their respective values.
+     *
+     * @param string the string to parse
+     * @return the parsed string
+     */
     public String parse(String string) {
         for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-            try {
-
-                string = string.replace("%" + entry.getKey() + "%", entry.getValue());
-                string = string.replace("%upper_" + entry.getKey() + "%", entry.getValue().toUpperCase());
-                string = string.replace("%lower_" + entry.getKey() + "%", entry.getValue().toLowerCase());
-                String capitalize = entry.getValue();
-                if (capitalize.length() > 1) {
-                    capitalize = capitalize.substring(0, 1).toUpperCase() + capitalize.substring(1);
-                }
-                string = string.replace("%capitalize_" + entry.getKey() + "%", capitalize);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
+            string = parse(string, entry.getKey(), entry.getValue());
         }
         return string;
     }
 
+    /**
+     * Replace all placeholders in the given string by their respective values.
+     * The method support the following placeholders:
+     * - %key%: the value of the key
+     * - %upper_key%: the value of the key in upper case
+     * - %lower_key%: the value of the key in lower case
+     * - %capitalize_key%: the value of the key with the first letter capitalized
+     * - %add_one_key%: the value of the key incremented by one (if the value is a number)
+     * - %remove_one_key%: the value of the key decremented by one (if the value is a number)
+     *
+     * @param string the string to parse
+     * @param key    the key of the placeholder
+     * @param value  the value of the placeholder
+     * @return the parsed string
+     */
     public String parse(String string, String key, String value) {
         try {
 
@@ -75,6 +101,7 @@ public class Placeholders {
             }
         } catch (Exception exception) {
             exception.printStackTrace();
+
         }
         return string;
     }
